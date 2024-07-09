@@ -1,0 +1,222 @@
+#include "stdio.h"
+#include "stdlib.h"
+#include "string.h"
+
+struct datos_usuario
+{
+	char nombre[40];
+	char direccion[40];
+	int telefono;
+};
+
+typedef struct nodo
+{
+	struct datos_usuario datos;
+	struct nodo *sig;
+}LISTA;
+
+void baja(LISTA **ptr, char car[40]);
+void consultar(LISTA *ptr, char car[40]);
+void insertar(LISTA **ptr, struct datos_usuario dat_usu_aux);
+void Mostrar_Lista_Usuarios(LISTA *ptr);
+void main (void)
+{
+	char car[40];
+	char num;
+	struct datos_usuario dat_usu;
+	LISTA *n1=NULL;
+
+	for(;;){
+		printf("1. Alta de Usuario.\n");
+		printf("2. Baja de Usuario.\n");
+		printf("3. Consultar Usuario.\n");
+		printf("4. Listado de Usuarios.\n");
+		printf("5. Salir.\n");
+		printf("Introduzca su opcion:");
+
+		scanf("%c", &num);
+		fflush(stdin);
+
+		switch(num)
+		{
+		case '1':
+			printf("Introduce nombre:");
+			gets(dat_usu.nombre);
+
+			printf("Introduce direccion:");
+			gets(dat_usu.direccion);
+
+			printf("Introduce telefono:");
+			scanf("%d%*c",&dat_usu.telefono);
+			insertar(&n1, dat_usu);
+			break;
+			
+		case '2':
+			if (n1 != NULL){
+         		printf("Introduce el nombre del usuario a dar de baja:");
+				gets(car);
+				baja(&n1, car);
+			}
+			else{
+				printf("La lista esta vacia.\n");
+			}
+            break;
+		
+		case '3':
+			if (n1 != NULL){
+         		printf("Introduce el nombre:\n");
+				gets(car);
+				consultar(n1, car);
+			}
+			else
+				printf("La lista esta vacia.\n");
+			
+			break;
+
+		case '4':
+			if (n1 != NULL)
+         		Mostrar_Lista_Usuarios(n1);
+			else
+				printf("La lista esta vacia.\n");
+			break;	
+		case '5':return;
+
+		}
+	}
+}
+
+void insertar(LISTA **ptr, struct datos_usuario dat_usu_aux)
+{
+	LISTA *p1, *p2;
+
+	p1 = *ptr;
+	if(p1 == NULL)
+	{
+		/* Insertar el primer elemento de la lista */
+		p1 = malloc(sizeof(LISTA));
+		if (p1 != NULL)
+		{
+			p1->datos = dat_usu_aux;
+			p1->sig = NULL;
+			*ptr = p1;
+		}
+	}
+	else if (strcmp(dat_usu_aux.nombre, p1->datos.nombre)<=0){
+		/* Inserci�n al comienzo de la lista */
+		p1 = malloc(sizeof(LISTA));
+		if (p1 != NULL)
+		{
+			
+			p1->datos = dat_usu_aux;
+			p1->sig = *ptr;
+			*ptr = p1;
+		}
+
+	}
+	else
+	{
+		LISTA *p3;
+		
+		
+		p3 = p1;
+		while ((strcmp(dat_usu_aux.nombre, p1->datos.nombre)>0) && (p1->sig != NULL)){
+			p3 = p1;
+			p1 = p1->sig;
+		}
+		if (strcmp(dat_usu_aux.nombre, p1->datos.nombre)<=0) {
+	
+			/* Inserci�n del elemento en una posici�n intermedia de la lista */
+			p2 = malloc(sizeof(LISTA));
+			if(p2 != NULL)
+			{
+				p2->datos = dat_usu_aux;
+				p2->sig = p3->sig;
+				p3->sig = p2;
+			}
+		}
+		
+		else{
+			/* Inserci�n de un elemento al final de la lista */
+			p2 = malloc(sizeof(LISTA));
+			if(p2 != NULL)
+			{
+				p2->datos = dat_usu_aux;
+				p2->sig = NULL;
+				p1->sig = p2;
+			}
+		}
+	}
+}
+
+
+void Mostrar_Lista_Usuarios(LISTA *ptr)
+{
+	while(ptr != NULL){
+		printf("Nombre: %s\n",(ptr->datos).nombre);
+		printf("Direccion: %s\n",(ptr->datos).direccion);
+		printf("Telefono: %d\n\n",(ptr->datos).telefono);
+		ptr = ptr->sig;
+	}
+}
+
+void consultar(LISTA *ptr, char car[40])
+{ 
+	while(ptr != NULL){
+		if(!strcmp((ptr->datos).nombre, car)){
+			printf("Nombre: %s\n",(ptr->datos).nombre);
+			printf("Direccion: %s\n",(ptr->datos).direccion);
+			printf("Telefono: %d\n",(ptr->datos).telefono);
+			return;
+		}
+		else if(strcmp((ptr->datos).nombre, car) > 0){ //Hemos superado el nodo donde deber�a estar.
+			printf("El nombre %s no se encuentra en la lista.\n", car);
+			return;
+        }
+		else
+		    ptr = ptr->sig;
+	}
+	if (ptr == NULL) //Hemos recorrido toda la lista sin encontrar el nombre buscado.
+		printf("El nombre %s no se encuentra en la lista.\n", car);
+}
+
+void baja(LISTA **ptr, char car[40])
+{
+	LISTA *p1, *p2;
+
+	p1 = p2 = *ptr;
+	
+	while(p1 != NULL){
+		if(!strcmp((p1->datos).nombre, car)){
+			if (p1==p2){//el nodo donde est� el nombre es el primero de la lista.
+				*ptr = p1->sig;
+			}
+			else{
+				p2->sig = p1->sig;
+			}
+			free(p1);
+			printf("el nodo ha sido borrado de la lista.\n");
+			return;
+		}
+        else if(strcmp((p1->datos).nombre, car) > 0){ //Hemos superado el nodo donde deber�a estar.
+			printf("El nombre %s no se encuentra en la lista.\n", car);
+			return;
+        }	
+		else{
+			p2 = p1;
+			p1 = p1->sig;
+		}
+			
+	
+    }
+    if (p1 == NULL) //Hemos recorrido toda la lista sin encontrar el nombre buscado.
+		printf("El nombre %s no se encuentra en la lista.\n", car);
+}
+
+
+	
+	
+
+
+	
+
+
