@@ -14,12 +14,6 @@
    - Desarrollado en lenguage C.
    - Solo necesitas compilar y ejecutar el archivo.
 
-3. **[Nombre del Proyecto 3]**
-   - Descripción breve del proyecto.
-   - Tecnologías utilizadas.
-   - Instrucciones de uso y cómo empezar.
-
-
 ## Contacto
 
 Si tienes alguna pregunta o sugerencia, no dudes en contactarme:
