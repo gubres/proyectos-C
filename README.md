@@ -14,6 +14,11 @@
    - Desarrollado en lenguage C.
    - Solo necesitas compilar y ejecutar el archivo.
 
+3. **[Juego de la adivinación]**
+   - Un juego sencillo que tiene por objetivo entretener al usuario, mientras intenta adivinar el numero.
+   - Desarrollado en lenguage C.
+   - Solo necesitas compilar y ejecutar el archivo.
+
 ## Contacto
 
 Si tienes alguna pregunta o sugerencia, no dudes en contactarme:
