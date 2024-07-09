@@ -37,4 +37,4 @@ Si tienes alguna pregunta o sugerencia, no dudes en contactarme:
 - [LinkedIn](https://www.linkedin.com/in/gustavoiago/)
 
 
-¡Gracias por visitar mis proyectos!
+¡Gracias por visitar mis proyectos en C!
