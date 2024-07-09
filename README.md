@@ -1,4 +1,4 @@
-# Proyectos de [Gustavo]
+# Proyectos en C
 
 ¡Bienvenido/a a mi repositorio de proyectos! Aquí encontrarás una variedad de proyectos que he desarrollado, desde aplicaciones simples hasta soluciones más complejas. Siéntete libre de explorar y contribuir.
 
@@ -9,10 +9,10 @@
    - Desarrollado en lenguage C.
    - Las instrucciones de uso están en el archivo README dentro del proyecto.
 
-2. **[Nombre del Proyecto 2]**
-   - Descripción breve del proyecto.
-   - Tecnologías utilizadas.
-   - Instrucciones de uso y cómo empezar.
+2. **[Agenda Estructura Ordenada]**
+   - Agenda con estructura ordenada donde se puede introducir, consultar, dar de baja y mostrar todo el listado de la agenda.
+   - Desarrollado en lenguage C.
+   - Solo necesitas compilar y ejecutar el archivo.
 
 3. **[Nombre del Proyecto 3]**
    - Descripción breve del proyecto.
